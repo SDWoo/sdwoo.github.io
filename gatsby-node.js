@@ -7,6 +7,7 @@
 /**
  * @type {import('gatsby').GatsbyNode['createPages']}
  */
+
 exports.createPages = async ({ actions }) => {
   const { createPage } = actions
   createPage({
@@ -14,5 +15,18 @@ exports.createPages = async ({ actions }) => {
     component: require.resolve("./src/templates/using-dsg.js"),
     context: {},
     defer: true,
+  })
+}
+
+const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin")
+
+exports.onCreateWebpackConfig = ({ getConfig, actions }) => {
+  const output = getConfig().output || {}
+
+  actions.setWebpackConfig({
+    output,
+    resolve: {
+      plugins: [new TsconfigPathsPlugin()],
+    },
   })
 }
