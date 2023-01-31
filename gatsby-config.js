@@ -12,7 +12,7 @@ module.exports = {
     `gatsby-plugin-image`,
     `gatsby-plugin-react-helmet`,
     {
-      resolve: "gatsby-plugin-typescript",
+      resolve: 'gatsby-plugin-typescript',
       options: {
         isTSX: true,
         allExtensions: true,
@@ -25,6 +25,7 @@ module.exports = {
     //     path: `${__dirname}/src/images`,
     //   },
     // },
+    `gatsby-plugin-emotion`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `tsconfig-paths-webpack-plugin`,
