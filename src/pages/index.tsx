@@ -1,14 +1,40 @@
-import React, { FunctionComponent } from 'react'
-import Text from 'components/Text'
-import { Link } from 'gatsby'
+import React from 'react';
+import styled from '@emotion/styled';
+import GlobalStyle from 'components/Common/GlobalStyle';
+import Introduction from 'components/Introduction';
+import Header from 'components/Common/Header';
+import Footer from 'components/Common/Footer';
 
-const IndexPage: FunctionComponent = function () {
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  min-height: 100vh;
+  word-break: keep-all;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+`;
+
+const Wrapper = styled.div`
+  display: flex;
+  max-width: 720px;
+  width: 100%;
+
+  flex-direction: column;
+`;
+
+const IndexPage = function () {
   return (
-    <div>
-      <Text text="Home" />
-      <Link to="/info/">To Info</Link>
-    </div>
-  )
-}
+    <Container>
+      <Wrapper>
+        <GlobalStyle />
+        <Header />
+        <Introduction />
+        <Footer />
+      </Wrapper>
+    </Container>
+  );
+};
 
-export default IndexPage
+export default IndexPage;
