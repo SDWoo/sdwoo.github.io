@@ -7,6 +7,8 @@
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "@mui/icons-material": "^5.11.0",
+    "@mui/material": "^5.11.7",
     "gatsby": "^5.5.0",
     "gatsby-plugin-emotion": "^8.5.0",
     "gatsby-plugin-image": "^3.5.0",
@@ -16,6 +18,7 @@
     "gatsby-transformer-sharp": "^5.5.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-rotating-text": "^1.4.1",
     "tsconfig-paths-webpack-plugin": "^4.0.0"
   },
   "devDependencies": {

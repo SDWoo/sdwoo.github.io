@@ -18,7 +18,10 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
-    "types": ["@emotion/react/types/css-prop"]
+    "types": ["@emotion/react/types/css-prop"],
+    "typeRoots": ["./node_modules/@types", "./types"],
+    "declaration": true, // lib 만들 때 .d.ts 파일을 자동으로 생성
+    "declarationDir": "./types"
   },
   "include": ["src/**/*.tsx"],
   "exclude": ["node_modules"]

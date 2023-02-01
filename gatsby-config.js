@@ -30,4 +30,4 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `tsconfig-paths-webpack-plugin`,
   ],
-}
+};
