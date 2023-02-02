@@ -3,11 +3,16 @@ import styled from '@emotion/styled';
 import { Link } from 'gatsby';
 
 const Container = styled.header`
-  justify-content: center;
+  display: flex;
+  align-items: center;
   width: 100%;
-  height: 10vh;
+  min-height: 10vh;
   padding: 20px;
   box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    padding: 20px 25px;
+  }
 `;
 
 const HeaderWrapper = styled.div`

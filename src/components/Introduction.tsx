@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React from 'react';
 import styled from '@emotion/styled';
 import ProfileImage from './ProfileImage';
 import ReactRotatingText from 'react-rotating-text';
@@ -24,9 +24,11 @@ const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  margin-top: 120px;
-  margin-bottom: 120px;
   background-color: white;
+  box-sizing: border-box;
+
+  margin: 120px 0;
+  padding: 50px;
 `;
 
 const IntroductionWrapper = styled.div`
@@ -49,7 +51,11 @@ const Title = styled.p`
   }
 `;
 
-const ThumbnailWrapper = styled.div``;
+const ThumbnailWrapper = styled.div`
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
 
 const SocialLink = styled.div``;
 
@@ -69,7 +75,7 @@ const Introduction = function () {
 
   const links: Link = {
     post: '/gatsby-starter-zoomkoding-introduction',
-    github: 'https://github.com/zoomkoding/zoomkoding-gatsby-blog',
+    github: 'https://github.com/SDWoo',
     demo: 'https://www.zoomkoding.com',
   };
 

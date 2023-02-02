@@ -5,8 +5,8 @@ const PROFILE_IMAGE_LINK =
   'https://avatars.githubusercontent.com/u/28768535?v=4'; // 왜 태그로 묶을까?
 
 const ProfileImageWrapper = styled.img`
-  width: 120px;
-  height: 120px;
+  width: 150px;
+  height: 150px;
   margin-bottom: 30px;
   border-radius: 50%;
 `;
