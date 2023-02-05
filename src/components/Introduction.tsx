@@ -4,6 +4,7 @@ import ProfileImage from './ProfileImage';
 import ReactRotatingText from 'react-rotating-text';
 import { keyframes } from '@emotion/react';
 import IconButtonBar from './IconButtonBar';
+import { IGatsbyImageData } from 'gatsby-plugin-image';
 
 const blinking_cursor = keyframes`
   0% {
@@ -66,7 +67,11 @@ export interface Link {
   demo: string;
 }
 
-const Introduction = function () {
+interface IntroductionProps {
+  profileImage: IGatsbyImageData;
+}
+
+const Introduction = ({ profileImage }: IntroductionProps) => {
   const description: string[] = [
     '새로운 것에 이끌리는',
     '사람에게 이로운 것을 추구하는',
@@ -95,7 +100,7 @@ const Introduction = function () {
         </SocialLink>
       </IntroductionWrapper>
       <ThumbnailWrapper>
-        <ProfileImage />
+        <ProfileImage profileImage={profileImage} />
       </ThumbnailWrapper>
     </Container>
   );

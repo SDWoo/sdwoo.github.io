@@ -50,7 +50,7 @@ const CategoryList = ({
     <CategoryListWrapper>
       {Object.entries(categoryList).map(([name, count]) => (
         <CategoryItem
-          to={`/?categroy=${name}`}
+          to={`/?category=${name}`}
           active={name === selectedCategory}
           key={name}
         >

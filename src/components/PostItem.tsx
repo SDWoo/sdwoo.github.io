@@ -92,7 +92,6 @@ const PostItem = ({
   },
   link,
 }: PostItemProps) => {
-  console.log(gatsbyImageData);
   return (
     <PostItemWrapper to={link}>
       <ThumbnailImage image={gatsbyImageData} alt="Post Item Image" />
