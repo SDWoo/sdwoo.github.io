@@ -28,7 +28,14 @@
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-prettier": "^4.2.1",
     "gatsby-plugin-react-helmet": "^6.5.0",
+    "gatsby-remark-copy-linked-files": "^6.5.0",
+    "gatsby-remark-external-links": "^0.0.4",
+    "gatsby-remark-images": "^7.5.0",
+    "gatsby-remark-prismjs": "^7.5.0",
+    "gatsby-remark-smartypants": "^6.5.0",
+    "gatsby-transformer-remark": "^6.5.0",
     "prettier": "^2.8.3",
+    "prismjs": "^1.29.0",
     "typescript": "^4.9.4"
   },
   "keywords": [
