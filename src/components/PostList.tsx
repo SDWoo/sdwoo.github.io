@@ -2,6 +2,9 @@ import React, { useMemo } from 'react';
 import styled from '@emotion/styled';
 import PostItem from './PostItem';
 import { PostListItemType } from '../types/PostItem.types';
+import useInfiniteScroll, {
+  useInfiniteScrollType,
+} from 'hooks/useInfiniteScroll';
 const PostListWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -23,23 +26,14 @@ interface PostListProps {
 }
 
 const PostList = ({ selectedCategory, posts }: PostListProps) => {
-  const postListData = useMemo(
-    () =>
-      posts.filter(
-        ({
-          node: {
-            frontmatter: { categories },
-          },
-        }: PostListItemType) =>
-          selectedCategory !== 'All'
-            ? categories.includes(selectedCategory)
-            : true,
-      ),
-    [selectedCategory],
+  const { containerRef, postList }: useInfiniteScrollType = useInfiniteScroll(
+    selectedCategory,
+    posts,
   );
+
   return (
-    <PostListWrapper>
-      {postListData.map(({ node: { id, frontmatter } }: PostListItemType) => (
+    <PostListWrapper ref={containerRef}>
+      {postList.map(({ node: { id, frontmatter } }: PostListItemType) => (
         <PostItem {...frontmatter} link="https://www.google.co.kr/" key={id} />
       ))}
     </PostListWrapper>

@@ -9,11 +9,11 @@ const ProfileImageWrapper = styled(GatsbyImage)`
   border-radius: 50%;
 `;
 
-interface PropfileImageProps {
+interface ProfileImageProps {
   profileImage: IGatsbyImageData;
 }
 
-const ProfileImage = ({ profileImage }: PropfileImageProps) => {
+const ProfileImage = ({ profileImage }: ProfileImageProps) => {
   return <ProfileImageWrapper image={profileImage} alt="Profile Image" />;
 };
 
