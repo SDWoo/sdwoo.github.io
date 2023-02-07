@@ -1,11 +1,48 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import Layout from 'components/Common/Layout';
+import { PostPageItemType } from 'types/PostItem.types';
+import PostHead from 'components/Post/PostHead';
+import PostContent from '../components/Post/PostContent';
 
-type PostTemplateProps = {};
+type PostTemplateProps = {
+  data: {
+    allMarkdownRemark: {
+      edges: PostPageItemType[];
+    };
+  };
+};
 
-const PostTemplate = (props: PostTemplateProps) => {
-  return <Layout>post_template</Layout>;
+const PostTemplate = ({
+  data: {
+    allMarkdownRemark: { edges },
+  },
+}: PostTemplateProps) => {
+  const {
+    node: {
+      html,
+      frontmatter: {
+        title,
+        summary, // 나중에 사용할 예정입니다!
+        date,
+        categories,
+        thumbnail: {
+          childImageSharp: { gatsbyImageData },
+        },
+      },
+    },
+  } = edges[0];
+  return (
+    <Layout>
+      <PostHead
+        title={title}
+        date={date}
+        categories={categories}
+        thumbnail={gatsbyImageData}
+      />
+      <PostContent html={html} />
+    </Layout>
+  );
 };
 
 export default PostTemplate;
