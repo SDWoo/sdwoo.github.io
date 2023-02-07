@@ -1,9 +1,5 @@
 import React, { useMemo } from 'react';
-import styled from '@emotion/styled';
-import GlobalStyle from 'components/Common/GlobalStyle';
 import Introduction from 'components/Introduction';
-import Header from 'components/Common/Header';
-import Footer from 'components/Common/Footer';
 import CategoryList from 'components/CategoryList';
 import PostList from 'components/PostList';
 import { IGatsbyImageData } from 'gatsby-plugin-image';
@@ -11,22 +7,7 @@ import { PostListItemType } from '../types/PostItem.types';
 import queryString, { ParsedQuery } from 'query-string';
 import { graphql } from 'gatsby';
 import { CategoryListProps } from '../components/CategoryList';
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  align-items: center;
-`;
-
-const Wrapper = styled.div`
-  display: flex;
-  max-width: 768px;
-  width: 100%;
-  min-height: 100vh;
-
-  flex-direction: column;
-`;
+import Layout from 'components/Common/Layout';
 
 interface IndexPageProps {
   location: {
@@ -85,19 +66,14 @@ const IndexPage = ({
   );
 
   return (
-    <Container>
-      <Wrapper>
-        <GlobalStyle />
-        <Header />
-        <Introduction profileImage={gatsbyImageData} />
-        <CategoryList
-          selectedCategory={selectedCategory}
-          categoryList={categoryList}
-        />
-        <PostList selectedCategory={selectedCategory} posts={edges} />
-        <Footer />
-      </Wrapper>
-    </Container>
+    <Layout>
+      <Introduction profileImage={gatsbyImageData} />
+      <CategoryList
+        selectedCategory={selectedCategory}
+        categoryList={categoryList}
+      />
+      <PostList selectedCategory={selectedCategory} posts={edges} />
+    </Layout>
   );
 };
 
@@ -111,6 +87,9 @@ export const getPostList = graphql`
       edges {
         node {
           id
+          fields {
+            slug
+          }
           frontmatter {
             title
             summary
