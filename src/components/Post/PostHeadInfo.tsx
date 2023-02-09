@@ -17,6 +17,11 @@ const PostHeaderInfoWrapper = styled.div`
   margin: 0 auto; // 왜 이걸 쓸까 flex를 해놓고?
   padding: 60px 0;
   color: #ffffff;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 40px 20px;
+  }
 `;
 
 const PrevPageIcon = styled.div`
@@ -30,6 +35,12 @@ const PrevPageIcon = styled.div`
   font-size: 22px;
   cursor: pointer;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+
+  @media (max-width: 768px) {
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+  }
 `;
 
 const Title = styled.div`
@@ -39,6 +50,10 @@ const Title = styled.div`
   white-space: normal;
   font-size: 35px;
   font-weight: 600;
+
+  @media (max-width: 768px) {
+    font-size: 25px;
+  }
 `;
 
 const PostHeaderInfos = styled.div`
@@ -55,6 +70,12 @@ const PostData = styled.div`
   margin-top: 10px;
   font-size: 14px;
   font-weight: 500;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    font-size: 12px;
+    font-weight: 400;
+  }
 `;
 
 const PostHeadInfo = ({ title, date, categories }: PostHeadInfoProps) => {

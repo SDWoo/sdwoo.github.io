@@ -19,6 +19,10 @@ const PostHeaderWrapper = styled.div`
   justify-content: center;
   width: 100%;
   height: 30vh;
+
+  @media (max-width: 768px) {
+    height: 25vh;
+  }
 `;
 
 const BackgroundImage = styled((props: GatsbyImgProps) => (

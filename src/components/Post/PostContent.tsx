@@ -30,7 +30,7 @@ const MarkdownRenderer = styled.div`
   * + h1,
   * + h2,
   * + h3 {
-    margin-top: 80px;
+    margin-top: 40px;
   }
 
   hr + h1,
@@ -69,7 +69,7 @@ const MarkdownRenderer = styled.div`
   // 구분선 디자인
   hr {
     border: 1px solid #000000;
-    margin: 100px 0;
+    margin: 50px 0;
   }
 
   // Link 디자인
@@ -83,16 +83,43 @@ const MarkdownRenderer = styled.div`
     margin: 30px 0;
     padding: 15px;
     font-size: 15px;
+    border-radius: 8px;
 
     ::-webkit-scrollbar-thumb {
       background: rgba(255, 255, 255, 0.5);
       border-radius: 3px;
     }
   }
-
   code[class*='language-'],
   pre[class*='language-'] {
     tab-size: 2;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 80px 20px;
+    line-height: 1.6;
+    font-size: 14px;
+
+    h1 {
+      font-size: 23px;
+    }
+
+    h2 {
+      font-size: 20px;
+    }
+
+    h3 {
+      font-size: 17px;
+    }
+
+    img {
+      width: 100%;
+    }
+
+    hr {
+      margin: 50px 0;
+    }
   }
 `;
 
