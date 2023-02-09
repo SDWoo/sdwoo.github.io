@@ -40,10 +40,6 @@ const Layout = ({ title, description, url, image, children }: LayoutProps) => {
             content="width=device-width, initial-scale=1.0"
           />
           <meta httpEquiv="Content-Type" content="text/html;charset=UTF-8" />
-          <meta
-            name="google-site-verification"
-            content="GIdjNoG0Gz01A9W7u5J1FH7khlkzqg8PM2hnh3pOgmc"
-          />
 
           <meta property="og:type" content="website" />
           <meta property="og:title" content={title} />
@@ -59,6 +55,10 @@ const Layout = ({ title, description, url, image, children }: LayoutProps) => {
           <meta name="twitter:site" content="@" />
           <meta name="twitter:creator" content="@사용자이름" />
 
+          <meta
+            name="google-site-verification"
+            content="GIdjNoG0Gz01A9W7u5J1FH7khlkzqg8PM2hnh3pOgmc"
+          />
           <html lang="ko" />
         </Helmet>
         <Header />
