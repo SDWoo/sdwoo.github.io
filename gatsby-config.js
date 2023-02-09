@@ -6,7 +6,7 @@ module.exports = {
     title: `개발자 지망생 동데브`,
     description: `타이거 벨트를 두른 개발자 지망생의 놀이터`,
     author: `Dong`,
-    siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
+    siteUrl: `https://sdwoo.github.io`,
   },
   plugins: [
     `gatsby-plugin-image`,
@@ -58,7 +58,7 @@ module.exports = {
           {
             resolve: 'gatsby-plugin-canonical-urls',
             options: {
-              siteUrl: '<https://my-website.com/>',
+              siteUrl: 'https://sdwoo.github.io',
               stripQueryString: true,
             },
           },
