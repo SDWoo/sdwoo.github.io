@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://sdwoo.github.io/sitemap-index.xml
+Host: https://sdwoo.github.io
