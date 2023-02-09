@@ -25,7 +25,6 @@ const MarkdownRenderer = styled.div`
   h2,
   h3 {
     font-weight: 800;
-    margin-bottom: 30px;
   }
   * + h1,
   * + h2,
@@ -53,7 +52,7 @@ const MarkdownRenderer = styled.div`
 
   // 인용문 스타일
   blockquote {
-    margin: 30px 0;
+    margin: 15px 0;
     padding: 5px 15px;
     border-left: 2px solid #000000;
     font-weight: 800;
@@ -90,8 +89,11 @@ const MarkdownRenderer = styled.div`
       border-radius: 3px;
     }
   }
+
   code[class*='language-'],
   pre[class*='language-'] {
+    color: #edd694;
+    background-color: #1b1b1b;
     tab-size: 2;
   }
 
