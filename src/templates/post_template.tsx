@@ -4,6 +4,7 @@ import Layout from 'components/Common/Layout';
 import { PostPageItemType } from 'types/PostItem.types';
 import PostHead from 'components/Post/PostHead';
 import PostContent from '../components/Post/PostContent';
+import CommentWidget from '../components/Post/CommentWidget';
 
 type PostTemplateProps = {
   data: {
@@ -41,6 +42,7 @@ const PostTemplate = ({
         thumbnail={gatsbyImageData}
       />
       <PostContent html={html} />
+      <CommentWidget />
     </Layout>
   );
 };
