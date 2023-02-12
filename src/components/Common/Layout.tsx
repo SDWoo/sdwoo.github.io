@@ -4,11 +4,13 @@ import GlobalStyle from 'components/Common/GlobalStyle';
 import Footer from 'components/Common/Footer';
 import Header from 'components/Common/Header';
 import { Helmet } from 'react-helmet';
+import { PostListItemType } from 'types/PostItem.types';
 type LayoutProps = {
   title?: string;
   description?: string;
   url?: string;
   image?: string;
+  posts?: PostListItemType[];
   children: ReactNode;
 };
 
@@ -28,7 +30,14 @@ const Wrapper = styled.div`
   flex-direction: column;
 `;
 
-const Layout = ({ title, description, url, image, children }: LayoutProps) => {
+const Layout = ({
+  title,
+  description,
+  url,
+  image,
+  posts,
+  children,
+}: LayoutProps) => {
   return (
     <Container>
       <Wrapper>
@@ -59,9 +68,14 @@ const Layout = ({ title, description, url, image, children }: LayoutProps) => {
             name="google-site-verification"
             content="GIdjNoG0Gz01A9W7u5J1FH7khlkzqg8PM2hnh3pOgmc"
           />
+          <meta
+            name="naver-site-verification"
+            content="480cb71e006a1a233e92748c8ba63215673624d6"
+          />
+
           <html lang="ko" />
         </Helmet>
-        <Header />
+        <Header posts={posts} />
         <GlobalStyle />
         {children}
         <Footer />
