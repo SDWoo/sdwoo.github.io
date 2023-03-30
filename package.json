@@ -27,6 +27,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
+    "react-hook-form": "^7.43.1",
     "react-rotating-text": "^1.4.1",
     "tsconfig-paths-webpack-plugin": "^4.0.0"
   },
