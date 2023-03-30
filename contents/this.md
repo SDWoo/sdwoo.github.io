@@ -1,9 +1,9 @@
 ---
 date: '2023-02-10'
 title: 'this 정리'
-categories: ['Web', 'Test', 'Optimization']
-summary: '홈페이지를 운영하는 많은 사람들 또는 기업들이 검색 페이지 최상단에 보여지게 하기 위해 어떤 최적화 작업을 하는지 알아보자.'
-thumbnail: './test copy.png'
+categories: ['JavaScript', '딥다이브']
+summary: '자기 참조 변수인 this에 대해 알아보고 정리하자!'
+thumbnail: './JS.png'
 ---
 
 # this
@@ -76,11 +76,10 @@ console.log(circle.getDiameter()); // 10
 > this 바인딩은 함수 호출 방식, 즉 함수가 어떻게 호출되었는지에 따라 동저긍로 결정된다. > \\ Tips. 렉시컬 스코프는 객체 생성 시점에, this 바인딩은 함수 호출 시점에 결정된다.
 
 - 함수 호출 방식은 다양하다
-
-1. 일반 함수 호출
-2. 메서드 함수 호출
-3. 생성자 함수 호출
-4. Function.prototype.apply/call/bind 메서드에 의한 간접 호출
+  1. 일반 함수 호출
+  2. 메서드 함수 호출
+  3. 생성자 함수 호출
+  4. Function.prototype.apply/call/bind 메서드에 의한 간접 호출
 
 ```jsx
 const foo = function () {

@@ -29,30 +29,36 @@ const MarkdownRenderer = styled.div`
   * + h1,
   * + h2,
   * + h3 {
-    margin-top: 40px;
+    margin-top: 20px;
   }
 
   hr + h1,
   hr + h2,
-  hr + h3 {
-    margin-top: 0;
+  hr + h3,
+  hr + h4 {
+    margin-top: 10px;
   }
 
   h1 {
-    font-size: 30px;
+    font-size: 35px;
   }
 
   h2 {
-    font-size: 25px;
+    font-size: 30px;
   }
 
   h3 {
+    font-size: 25px;
+  }
+
+  h4 {
     font-size: 20px;
+    padding-top: 10px;
   }
 
   // 인용문 스타일
   blockquote {
-    margin: 15px 0;
+    margin: 5px 0;
     padding: 5px 15px;
     border-left: 2px solid #000000;
     font-weight: 800;
@@ -62,13 +68,13 @@ const MarkdownRenderer = styled.div`
   ol,
   ul {
     margin-left: 20px;
-    padding: 30px 0;
+    padding: 5px 0;
   }
 
   // 구분선 디자인
   hr {
     border: 1px solid #000000;
-    margin: 50px 0;
+    margin: 30px 0;
   }
 
   // Link 디자인
@@ -84,9 +90,14 @@ const MarkdownRenderer = styled.div`
     font-size: 15px;
     border-radius: 8px;
 
-    ::-webkit-scrollbar-thumb {
+    // 막대기
+    &::-webkit-scrollbar-thumb {
       background: rgba(255, 255, 255, 0.5);
       border-radius: 3px;
+    }
+
+    // 뒷배경
+    &::-webkit-scrollbar {
     }
   }
 
