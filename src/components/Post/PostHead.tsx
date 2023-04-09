@@ -33,6 +33,7 @@ const BackgroundImage = styled((props: GatsbyImgProps) => (
   height: 100%;
   border-radius: 7px;
   object-fit: cover;
+  background-size: cover;
   filter: brightness(0.25);
 `;
 

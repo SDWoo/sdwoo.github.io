@@ -30,14 +30,7 @@ const Wrapper = styled.div`
   flex-direction: column;
 `;
 
-const Layout = ({
-  title,
-  description,
-  url,
-  image,
-  posts,
-  children,
-}: LayoutProps) => {
+const Layout = ({ title, description, url, image, children }: LayoutProps) => {
   return (
     <Container>
       <Wrapper>
@@ -75,7 +68,7 @@ const Layout = ({
 
           <html lang="ko" />
         </Helmet>
-        <Header posts={posts} />
+        <Header />
         <GlobalStyle />
         {children}
         <Footer />
