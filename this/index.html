@@ -1,0 +1,214 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta name="generator" content="Gatsby 5.5.0"/><meta data-react-helmet="true" name="description" content="자기 참조 변수인 this에 대해 알아보고 정리하자!"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1.0"/><meta data-react-helmet="true" http-equiv="Content-Type" content="text/html;charset=UTF-8"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" property="og:title" content="this 정리"/><meta data-react-helmet="true" property="og:description" content="자기 참조 변수인 this에 대해 알아보고 정리하자!"/><meta data-react-helmet="true" property="og:image" content="/static/8155d983e2c1460e10661d6945336f58/JS.png"/><meta data-react-helmet="true" property="og:url"/><meta data-react-helmet="true" property="og:site_name" content="this 정리"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:title" content="this 정리"/><meta data-react-helmet="true" name="twitter:description" content="자기 참조 변수인 this에 대해 알아보고 정리하자!"/><meta data-react-helmet="true" name="twitter:image" content="/static/8155d983e2c1460e10661d6945336f58/JS.png"/><meta data-react-helmet="true" name="twitter:site" content="@"/><meta data-react-helmet="true" name="twitter:creator" content="@사용자이름"/><meta data-react-helmet="true" name="google-site-verification" content="GIdjNoG0Gz01A9W7u5J1FH7khlkzqg8PM2hnh3pOgmc"/><meta data-react-helmet="true" name="naver-site-verification" content="480cb71e006a1a233e92748c8ba63215673624d6"/><style data-href="/styles.9e907bc32054b7771552.css" data-identity="gatsby-global-css">code[class*=language-],pre[class*=language-]{word-wrap:normal;background:none;color:#ccc;font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;-webkit-hyphens:none;hyphens:none;line-height:1.5;tab-size:4;text-align:left;white-space:pre;word-break:normal;word-spacing:normal}pre[class*=language-]{margin:.5em 0;overflow:auto;padding:1em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#2d2d2d}:not(pre)>code[class*=language-]{border-radius:.3em;padding:.1em;white-space:normal}.token.block-comment,.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#999}.token.punctuation{color:#ccc}.token.attr-name,.token.deleted,.token.namespace,.token.tag{color:#e2777a}.token.function-name{color:#6196cc}.token.boolean,.token.function,.token.number{color:#f08d49}.token.class-name,.token.constant,.token.property,.token.symbol{color:#f8c555}.token.atrule,.token.builtin,.token.important,.token.keyword,.token.selector{color:#cc99cd}.token.attr-value,.token.char,.token.regex,.token.string,.token.variable{color:#7ec699}.token.entity,.token.operator,.token.url{color:#67cdcc}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.token.inserted{color:green}</style><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){const t=e.target;if(void 0===t.dataset.mainImage)return;if(void 0===t.dataset.gatsbyImageSsr)return;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><title data-react-helmet="true">this 정리</title><link rel="sitemap" type="application/xml" href="/sitemap-index.xml"/><link rel="canonical" href="https://sdwoo.github.io/this/" data-baseprotocol="https:" data-basehost="sdwoo.github.io"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><style data-emotion="css x1t9a4">.css-x1t9a4{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;height:100%;}</style><main class="css-x1t9a4 ea616dt1"><style data-emotion="css khop2w">.css-khop2w{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;max-width:768px;width:100%;min-height:100vh;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;}</style><div class="css-khop2w ea616dt0"><style data-emotion="css zrhxm0">.css-zrhxm0{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;width:100%;min-height:10vh;padding:20px;box-sizing:border-box;}@media (max-width: 768px){.css-zrhxm0{padding:20px 25px;}}</style><header class="css-zrhxm0 e1ke0ojz4"><style data-emotion="css unrh3l">.css-unrh3l{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;width:100%;}</style><div class="css-unrh3l e1ke0ojz3"><style data-emotion="css 14is9qy">.css-14is9qy{font-size:20px;}</style><div class="css-14is9qy e1ke0ojz1"><a href="/"><style data-emotion="css 7asic0">.css-7asic0{font-weight:700;font-size:21px;}</style><div class="css-7asic0 e1ke0ojz2">Dong-dev</div></a></div><style data-emotion="css zjik7">.css-zjik7{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}</style><div class="css-zjik7 e1ke0ojz0"><a href="/info/"><div class="css-7asic0 e1ke0ojz2">Info</div></a></div></div></header><style data-emotion="css-global 1pxerhs">@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');*{padding:0;margin:0;box-sizing:border-box;font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;}html{font-size:62.5%;}html,body,#___gatsby{height:100%;}a,a:hover{color:inherit;-webkit-text-decoration:none;text-decoration:none;cursor:pointer;}</style><style data-emotion="css zim5rt">.css-zim5rt{position:relative;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;width:100%;height:30vh;}@media (max-width: 768px){.css-zim5rt{height:25vh;}}</style><div class="css-zim5rt e1opi4mu1"><style data-emotion="css ul3q56">.css-ul3q56{z-index:-1;width:70%;height:100%;border-radius:7px;object-fit:cover;-webkit-background-size:cover;background-size:cover;-webkit-filter:brightness(0.25);filter:brightness(0.25);}</style><div data-gatsby-image-wrapper="" style="position:absolute" class="gatsby-image-wrapper gatsby-image-wrapper-constrained css-ul3q56 e1opi4mu0"><div style="max-width:225px;display:block"><img alt="" role="presentation" aria-hidden="true" src="data:image/svg+xml;charset=utf-8,%3Csvg%20height=&#x27;225&#x27;%20width=&#x27;225&#x27;%20xmlns=&#x27;http://www.w3.org/2000/svg&#x27;%20version=&#x27;1.1&#x27;%3E%3C/svg%3E" style="max-width:100%;display:block;position:static"/></div><img aria-hidden="true" data-placeholder-image="" style="opacity:1;transition:opacity 500ms linear" decoding="async" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAIAAAAC64paAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB/UlEQVR42u2ST2jTcBTHX9PF/nNtSbNoXfP7/Rar7uBREAW1B3Eg7CIMPHvzrncFHQPZxLk5EYVuONhJ0MEOA2FnxT8VRZxNQte1acygbDbRpWl+mvSgjhbUkwcfP97h/fjwfd/3HnxR0V8/+A//g/DnopftEmrIyJT/BLYU5OrEVFD9vdiq4WYVW0oX2FKQvYaMt+Lpk+GR4ejWquhqeHqMG8yye4XgubPRdyv7nLLHd4adMtYKmWSckXBPq4IX5wQASAvBY0dCAHDh/G6qY1PuAjfLuFbIpJLMftJDDXLlUgIA8tM8daTFWWH9ZcZeQ5b6G8pUw7O3eAA4PLhrYYb/WsGuQcxiF8+mr9yGswPs1kfRUtHIcAz8OCixS/MC1Tq1bcpou+TB1deZZII5ILGbH8RmBdsGeZIXhnIRAIhFAq+W07SKYUfDLR3X3mRcHdeLYiLOHMqylr+hF8tp1xygtnT5YhwApkY5ukHgZ02q4wcTqURvYPIad+9GCgByx8POOj5xNBQKBW5f51Ye7TlzKgwA83d4auyAa/hxvi8WZdr2gkFYuNtH62RmjOuNBQCA8X+GcpHNVXG79KtnyxdXnvXfH09NjXKFp+mWhr3iJ6I+75+b5G9e5ZYeCg0V2WXU4UgasjctahC6QZwKbp/xj6JBqE4sfzrfV/UNQqWm7wPJ0uQAAAAASUVORK5CYII=" alt=""/><picture><source type="image/webp" data-srcset="/static/8155d983e2c1460e10661d6945336f58/d66a6/JS.webp 56w,/static/8155d983e2c1460e10661d6945336f58/a72fd/JS.webp 113w,/static/8155d983e2c1460e10661d6945336f58/1cf63/JS.webp 225w" sizes="(min-width: 225px) 225px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 225px) 225px, 100vw" decoding="async" loading="lazy" data-src="/static/8155d983e2c1460e10661d6945336f58/5371e/JS.png" data-srcset="/static/8155d983e2c1460e10661d6945336f58/24271/JS.png 56w,/static/8155d983e2c1460e10661d6945336f58/39d80/JS.png 113w,/static/8155d983e2c1460e10661d6945336f58/5371e/JS.png 225w" alt="thumbnail"/></picture><noscript><picture><source type="image/webp" srcSet="/static/8155d983e2c1460e10661d6945336f58/d66a6/JS.webp 56w,/static/8155d983e2c1460e10661d6945336f58/a72fd/JS.webp 113w,/static/8155d983e2c1460e10661d6945336f58/1cf63/JS.webp 225w" sizes="(min-width: 225px) 225px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 225px) 225px, 100vw" decoding="async" loading="lazy" src="/static/8155d983e2c1460e10661d6945336f58/5371e/JS.png" srcSet="/static/8155d983e2c1460e10661d6945336f58/24271/JS.png 56w,/static/8155d983e2c1460e10661d6945336f58/39d80/JS.png 113w,/static/8155d983e2c1460e10661d6945336f58/5371e/JS.png 225w" alt="thumbnail"/></picture></noscript><script type="module">const t="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;if(t){const t=document.querySelectorAll("img[data-main-image]");for(let e of t){e.dataset.src&&(e.setAttribute("src",e.dataset.src),e.removeAttribute("data-src")),e.dataset.srcset&&(e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset"));const t=e.parentNode.querySelectorAll("source[data-srcset]");for(let e of t)e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset");e.complete&&(e.style.opacity=1,e.parentNode.parentNode.querySelector("[data-placeholder-image]").style.opacity=0)}}</script></div><style data-emotion="css 11xkz0h">.css-11xkz0h{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:100%;height:100%;margin:0 auto;padding:60px 0;color:#ffffff;}@media (max-width: 768px){.css-11xkz0h{width:100%;padding:40px 20px;}}</style><div class="css-11xkz0h e1st1jau4"><style data-emotion="css 34zww5">.css-34zww5{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background-color:#ffffff;color:#000000;font-size:22px;cursor:pointer;box-shadow:0 0 10px rgba(0, 0, 0, 0.3);}@media (max-width: 768px){.css-34zww5{width:30px;height:30px;font-size:18px;}}</style><div class="css-34zww5 e1st1jau3"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="arrow-left" class="svg-inline--fa fa-arrow-left " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"></path></svg></div><style data-emotion="css zigog8">.css-zigog8{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;}</style><div class="css-zigog8 e1st1jau1"><style data-emotion="css 1ccvybh">.css-1ccvybh{overflow:hidden;overflow-wrap:break-word;margin-top:auto;white-space:normal;font-size:35px;font-weight:600;}@media (max-width: 768px){.css-1ccvybh{font-size:25px;}}</style><div class="css-1ccvybh e1st1jau2">this 정리</div><style data-emotion="css h6d1vi">.css-h6d1vi{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:end;-ms-flex-pack:end;-webkit-justify-content:end;justify-content:end;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin-top:10px;font-size:14px;font-weight:500;}@media (max-width: 768px){.css-h6d1vi{-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;font-size:12px;font-weight:400;}}</style><div class="css-h6d1vi e1st1jau0"><div>JavaScript / 딥다이브</div><div>2023.02.10.</div></div></div></div></div><style data-emotion="css lq08om">.css-lq08om{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:100%;margin:0 auto;padding:50px 0;word-break:break-all;line-height:1.8;font-size:16px;font-weight:400;}.css-lq08om p{padding:3px 0;}.css-lq08om h1,.css-lq08om h2,.css-lq08om h3{font-weight:800;}.css-lq08om *+h1,.css-lq08om *+h2,.css-lq08om *+h3{margin-top:20px;}.css-lq08om hr+h1,.css-lq08om hr+h2,.css-lq08om hr+h3,.css-lq08om hr+h4{margin-top:10px;}.css-lq08om h1{font-size:35px;}.css-lq08om h2{font-size:30px;}.css-lq08om h3{font-size:25px;}.css-lq08om h4{font-size:20px;padding-top:10px;}.css-lq08om blockquote{margin:5px 0;padding:5px 15px;border-left:2px solid #000000;font-weight:800;}.css-lq08om ol,.css-lq08om ul{margin-left:20px;padding:5px 0;}.css-lq08om hr{border:1px solid #000000;margin:30px 0;}.css-lq08om a{color:#4263eb;-webkit-text-decoration:underline;text-decoration:underline;}.css-lq08om pre[class*='language-']{margin:30px 0;padding:15px;font-size:15px;border-radius:8px;}.css-lq08om pre[class*='language-']::-webkit-scrollbar-thumb{background:rgba(255, 255, 255, 0.5);border-radius:3px;}.css-lq08om code[class*='language-'],.css-lq08om pre[class*='language-']{color:#edd694;background-color:#1b1b1b;tab-size:2;}@media (max-width: 768px){.css-lq08om{width:100%;padding:80px 20px;line-height:1.6;font-size:14px;}.css-lq08om h1{font-size:23px;}.css-lq08om h2{font-size:20px;}.css-lq08om h3{font-size:17px;}.css-lq08om img{width:100%;}.css-lq08om hr{margin:50px 0;}}</style><div class="css-lq08om e1ijh0y10"><h1>this</h1>
+<h3>22.1 this 키워드</h3>
+<blockquote>
+<p><code class="language-text">메서드</code>가 자신이 속한 객체의 프로퍼티를 참조하려면 먼저 자신이 속한 객체를 가리키는 식별자를 참조할 수 있어야 한다.</p>
+</blockquote>
+<ul>
+<li>객체 리터럴 방식으로 생성한 경우 메서드 내부에서 자기 자신이 속한 객체를 재귀적으로 참조할 수 있다.</li>
+<li>getDiameter가 호출될 시점에는 이미 circle 객체가 만들어져 있기 때문에 해당 동작이 가능하다!</li>
+<li>하지만 이것은 일반적이지 않으며 바람직하지도 않다.</li>
+</ul>
+<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">const</span> circle <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">radius</span><span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+  <span class="token function">getDiameter</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token number">2</span>  circle<span class="token punctuation">.</span>radius<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>circle<span class="token punctuation">.</span><span class="token function">getDiameter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 10</span></code></pre></div>
+<ul>
+<li>생성자 함수 방식으로 인스턴스를 생성하는 경우
+<ul>
+<li>생성자 함수 또한 내부에서 프로퍼티나 메서드를 추가하기 위해 자신이 생성할 인스턴스를 참조할 수 있어야 한다.</li>
+<li>생성자 함수를 정의하고, new 연산자와 함께 생성자 함수를 호출해야 하는 단계가 추가로 필요하다.</li>
+<li>따라서 생성자 함수로 인스턴스를 생성하려면 먼저 생성자 함수가 존재해야 한다.</li>
+<li>생성자 함수를 정의하는 시점에는 아직 new 연산자로 인스턴스를 생성하기 이전이므로 해당 인스턴스를 가리키는 식별자를 알 수 없다.</li>
+<li>따라서 자신이 속한 객체 또는 자신이 생성할 인스턴스를 가리키는 특수한 식별자가 필요하다</li>
+<li>이게 this이다.</li>
+</ul>
+</li>
+</ul>
+<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx">  <span class="token keyword">function</span> <span class="token function">Circle</span><span class="token punctuation">(</span><span class="token parameter">radius</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token operator">??</span><span class="token operator">??</span><span class="token punctuation">.</span>radius <span class="token operator">=</span> radius<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token class-name">Circle</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">getDiameter</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token number">2</span>  <span class="token operator">??</span><span class="token operator">?.</span>radius<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">const</span> circle <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Circle</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">💡 그래서 this는 무엇인가?
+- 자신이 속한 개체 또는 자신이 생성할 인스턴스를 가리키는 자기 참조 변수다.
+- this를 통해 자신이 속한 객체 또는 생성할 인스턴스의 프로퍼티나 메서드를 참조할 수 있다.
+- this는 자바스크립트 엔진을 통해 암묵적으로 생성되며, 코드 어디서든 참조할 수 있다.
+- 함수를 호출하면, arguments 객체와 this가 암묵적으로 함수 내부에 전달된다. 또한 지역변수처럼 사용 가능하다.
+- 단, this가 가리키는 값. 즉, this 바인딩은 함수 호출 방식에 의해 동적으로 결정된다.</code></pre></div>
+<ul>
+<li>객체 리터럴의 메서드 내부에서의 this는 메서드를 호출한 객체. 즉, circle을 가리킨다.</li>
+<li>생성자 함수 내부의 this는 생성자 함수가 생성할 인스턴스를 가리킨다.</li>
+<li>자바스크립트의 this는 함수가 호출되는 방식에 따라 this에 바인딩될 값, 즉. this 바인딩이 동적으로 결정된다.</li>
+<li>strict모드도 this바인딩에 영향을 준다.</li>
+<li>정리를 해보면 this 바인딩은 함수가 호출되는 시점에 자바스크립트 엔진을 통해 암묵적으로 생성된다.</li>
+</ul>
+<h5>🔎 용어 모음집</h5>
+<ol>
+<li>인스턴스란? new 키워드를 붙여 생성하는 클래스의 복제본을 말한다.
+=> const a = new Number(1); 인 경우 a는 Number 인스턴스가 된다.</li>
+<li>바인딩이란? 식별자와 값을 연결하는 과정
+=> 변수 선언은 변수 이름(식별자)와 확보된 공간의 주소를 바인딩하는 것이다.
+=> this 바인딩은 this(키워드로 분류되지만 식별자 역할도 함)와 this가 가리킬 객체를 바인딩하는 것이다.</li>
+</ol>
+<h3>22.2 함수 호출 방식과 this 바인딩</h3>
+<blockquote>
+<p>this 바인딩은 함수 호출 방식, 즉 함수가 어떻게 호출되었는지에 따라 동저긍로 결정된다. > \ Tips. 렉시컬 스코프는 객체 생성 시점에, this 바인딩은 함수 호출 시점에 결정된다.</p>
+</blockquote>
+<ul>
+<li>함수 호출 방식은 다양하다
+<ol>
+<li>일반 함수 호출</li>
+<li>메서드 함수 호출</li>
+<li>생성자 함수 호출</li>
+<li>Function.prototype.apply/call/bind 메서드에 의한 간접 호출</li>
+</ol>
+</li>
+</ul>
+<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">const</span> <span class="token function-variable function">foo</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">dir</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 1. 일반 함수 호출</span>
+<span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// window</span>
+
+<span class="token comment">// 2.메서드 호출</span>
+
+<span class="token keyword">const</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span> foo <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+obj<span class="token punctuation">.</span><span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// obj</span>
+
+<span class="token comment">//3.생성자 함수 호출</span>
+
+<span class="token keyword">new</span> <span class="token class-name">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// foo{}</span>
+<span class="token comment">//4. Function.prototype.apply/call/bind 메서드에 의한 간접 호출</span>
+
+<span class="token keyword">const</span> bar <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'bar'</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token function">foo</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>bar<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// bar</span>
+
+<span class="token function">foo</span><span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span>bar<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// bar</span>
+<span class="token function">foo</span><span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span>bar<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// bar</span></code></pre></div>
+<h4>22.2.1 일반 함수 호출</h4>
+<blockquote>
+<p>기본적으로 this에는 전역 객체가 바인딩 된다.</p>
+</blockquote>
+<ul>
+<li>전역함수는 물론이고, 중첩 함수를 일반함수로 호출하면 함수 내부의 this에는 전역 객체가 바인딩된다.</li>
+</ul>
+<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"foo's this:"</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">function</span> <span class="token function">bar</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"bar's this:"</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">bar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// window</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// window</span></code></pre></div>
+<ul>
+<li>
+<p>여기서, this는 객체의 프로퍼티나 메서드를 참조하기 위한 자기 참조 변수임으로, 일반함수에서 this는 의미가 없다!</p>
+</li>
+<li>
+<p>따라서, strict 모드가 적용된 일반 함수의 this에서는 undefined가 바인딩된다.</p>
+</li>
+</ul>
+<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">var</span> value <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> example <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">value</span><span class="token operator">:</span> <span class="token number">100</span><span class="token punctuation">,</span>
+
+  <span class="token function">method</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// example 객체 {value: 100, method: f}</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 100</span>
+    <span class="token keyword">function</span> <span class="token function">inner</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token comment">// window</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token comment">// 10</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token comment">// window</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token comment">// 10</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">inner</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+example<span class="token punctuation">.</span><span class="token function">method</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<ul>
+<li>콜백함수가 일반 함수로 호출된다면 콜백 함수 내부의 this에도 전역객체가 바인딩된다.
+=> 어떤 함수라도 일반 함수로 호출한다면 this에 전역객체가 바인딩 된다.
+=> 이렇게되면 어떤 문제가 생길까요?
+=> 외부함수인 메서드와 중첩함수나 콜백함수 같은 헬퍼 함수의 this가 일치하지 않게 된다.
+=> 이렇게 되면 헬퍼 함수의 역할을 제대로 못하게 된다.</li>
+<li>해결방안 => 밑의 방법, Function.Prototype.call,aplly,bind 등</li>
+</ul>
+<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">var</span> value <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">value</span><span class="token operator">:</span> <span class="token number">100</span><span class="token punctuation">,</span>
+  <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> that <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+    <span class="token function">setTimeout</span><span class="token punctuation">(</span>
+      <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>that<span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 1번</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 2번</span>
+      <span class="token punctuation">}</span><span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      <span class="token number">100</span><span class="token punctuation">,</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">//아니면 화살표 함수를 사용하는 방법도 있다.</span>
+    <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre></div>
+<hr>
+<h4>22.2.2 메서드 호출</h4>
+<p>메서드 내부의 this에는 메서드를 호출한 객체. 즉, 메서드를 호출할 때 .\ 연산자 앞에 붙은 객체가 바인딩 된다.</p>
+<ul>
+<li>메서드는 객체에 포함된 것이 아니라, 독립적으로 존재하는 별도의 객체다.</li>
+<li>따라서, getName 프로퍼티가 가리티는 함수객체인 getName 메서드는 할당이 가능하다.</li>
+<li>다른 객체의 프로퍼티에 할당하는 것으로 다른 객체의 메서드가 될 수도 있다.</li>
+<li>일반 변수에 할당하여 일반 함수로 호출될 수도 있다.</li>
+<li>이 함수 객체는 함수 호출시에 어떤 객체에 this가 바인딩 될 것인지 정한다.</li>
+</ul>
+<h4>22.2.3 생성자 함수 호출</h4>
+<blockquote>
+<p>생성자 함수 내부의 this에는 생성자 함수가 생성할 인스턴스가 바인딩된다.</p>
+</blockquote>
+<h4>22.2.4 Function.prototyppe.apply/call/bind 메서드에 의한 간접 호출</h4>
+<ul>
+<li>
+<p>apply와 call</p>
+</li>
+<li>
+<p>apply와 call 메서드의 본질적인 기능은 함수를 호출하는 것이다.</p>
+</li>
+<li>
+<p>함수를 호출하면서 첫 번째 인수로 전달한 특정 객체를 호출한 함수의 this에 바인딩한다.</p>
+</li>
+</ul></div><style data-emotion="css hx9xpc">@media (max-width: 768px){.css-hx9xpc{padding:0 20px;}}</style><div class="css-hx9xpc e1gqsjds0"></div><style data-emotion="css 9w9jmx">.css-9w9jmx{display:grid;place-items:center;margin-top:auto;padding:50px 0;font-size:15px;text-align:center;line-height:1.5;}@media (max-width: 768px){.css-9w9jmx{font-size:13px;}}</style><footer class="css-9w9jmx e1oae0v80">Thank You for Visiting My Blog, Have a Good Day 😆<br/>© 2023 Developer Dongwoo, Powered By Gatsby.</footer></div></main></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/this/";/*]]>*/</script><!-- slice-start id="_gatsby-scripts-1" -->
+          <script
+            id="gatsby-chunk-mapping"
+          >
+            window.___chunkMapping="{\"app\":[\"/app-8a57b157afa090862902.js\"],\"component---src-pages-404-tsx\":[\"/component---src-pages-404-tsx-bb9ddb558ef536a8781e.js\"],\"component---src-pages-index-tsx\":[\"/component---src-pages-index-tsx-4ccaf15ced899071d798.js\"],\"component---src-pages-info-tsx\":[\"/component---src-pages-info-tsx-41241f3fe27cf7a00322.js\"],\"component---src-templates-post-template-tsx\":[\"/component---src-templates-post-template-tsx-054c31d518ee9a8b2924.js\"]}";
+          </script>
+        <script>window.___webpackCompilationHash="42f067623dee139be3ad";</script><script src="/webpack-runtime-f5c585fe6a8197b0e9f5.js" async></script><script src="/framework-e00b866f39f81195a42a.js" async></script><script src="/app-8a57b157afa090862902.js" async></script><!-- slice-end id="_gatsby-scripts-1" --></body></html>
