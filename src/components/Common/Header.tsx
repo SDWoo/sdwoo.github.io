@@ -23,7 +23,7 @@ const HeaderWrapper = styled.div`
 
 const LinkButton = styled.div`
   font-weight: 700;
-  font-size: 17px;
+  font-size: 21px;
 `;
 
 const FrontSection = styled.div`

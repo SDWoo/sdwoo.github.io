@@ -3,10 +3,10 @@
  */
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
-    siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
+    title: `개발자 지망생 동데브`,
+    description: `타이거 벨트를 두른 개발자 지망생의 놀이터`,
+    author: `Dong`,
+    siteUrl: `https://sdwoo.github.io`,
   },
   plugins: [
     `gatsby-plugin-image`,
@@ -43,11 +43,26 @@ module.exports = {
         },
       },
     },
+    `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,
     {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
+          'gatsby-plugin-sitemap',
+          {
+            resolve: 'gatsby-plugin-robots-txt',
+            options: {
+              policy: [{ userAgent: '*', allow: '/' }],
+            },
+          },
+          {
+            resolve: 'gatsby-plugin-canonical-urls',
+            options: {
+              siteUrl: 'https://sdwoo.github.io',
+              stripQueryString: true,
+            },
+          },
           {
             resolve: 'gatsby-remark-smartypants',
             options: {

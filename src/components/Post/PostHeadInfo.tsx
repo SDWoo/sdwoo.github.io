@@ -80,7 +80,6 @@ const PostData = styled.div`
 
 const PostHeadInfo = ({ title, date, categories }: PostHeadInfoProps) => {
   const goToBackPage = () => window.history.back();
-  console.log(title, date, categories);
   return (
     <PostHeaderInfoWrapper>
       <PrevPageIcon onClick={goToBackPage}>

@@ -12,6 +12,10 @@ const defaultStyle = css`
       sans-serif;
   }
 
+  html {
+    font-size: 62.5%;
+  }
+
   html,
   body,
   #___gatsby {
